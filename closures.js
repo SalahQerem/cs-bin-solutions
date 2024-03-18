@@ -1,8 +1,8 @@
 // CHALLENGE 1
 function createFunction() {
-  function print() {
+  const print = () => {
     console.log("Hello");
-  }
+  };
   return print;
 }
 
@@ -12,9 +12,9 @@ function createFunction() {
 
 // CHALLENGE 2
 function createFunctionPrinter(input) {
-  function printInput() {
+  const printInput = () => {
     console.log(input);
-  }
+  };
   return printInput;
 }
 
@@ -27,10 +27,10 @@ function createFunctionPrinter(input) {
 // CHALLENGE 3
 function outer() {
   let counter = 0; // this variable is outside incrementCounter's scope
-  function incrementCounter() {
+  const incrementCounter = () => {
     counter++;
     console.log("counter", counter);
-  }
+  };
   return incrementCounter;
 }
 
@@ -49,10 +49,10 @@ const jasCounter = outer();
 // willCounter();
 
 function addByX(base) {
-  function addByTwo(x) {
+  const addByTwo = (x) => {
     // console.log(x + base);
     return x + base;
-  }
+  };
   return addByTwo;
 }
 
@@ -72,10 +72,9 @@ const addByTwo = addByX(2);
 
 // CHALLENGE 4
 function once(func) {
-  let previousResult;
-  function callFunc(x) {
+  const callFunc = (x) => {
     return func(x);
-  }
+  };
   return callFunc;
 }
 
@@ -88,13 +87,13 @@ function once(func) {
 // CHALLENGE 5
 function after(count, func) {
   let actCount = 1;
-  function sayHello() {
+  const sayHello = () => {
     if (actCount === count) {
       func();
     } else {
       actCount++;
     }
-  }
+  };
   return sayHello;
 }
 
@@ -113,14 +112,14 @@ function delay(func, wait) {
 // CHALLENGE 7
 function rollCall(names) {
   let index = 0;
-  function printName() {
+  const printName = () => {
     if (index < names.length) {
       console.log(names[index]);
       index++;
     } else {
       console.log("Everyone accounted for");
     }
-  }
+  };
   return printName;
 }
 
@@ -134,14 +133,14 @@ function rollCall(names) {
 // CHALLENGE 8
 function saveOutput(func, magicWord) {
   let nums = {};
-  function printOrLog(x) {
+  const printOrLog = (x) => {
     if (x === magicWord) {
       return nums;
     } else {
       nums[x] = func(x);
       return func(x);
     }
-  }
+  };
   return printOrLog;
 }
 
@@ -155,9 +154,9 @@ function saveOutput(func, magicWord) {
 // CHALLENGE 9
 function cycleIterator(array) {
   let index = 0;
-  function printItem() {
+  const printItem = () => {
     return array[index++ % array.length];
-  }
+  };
   return printItem;
 }
 
@@ -171,9 +170,9 @@ function cycleIterator(array) {
 
 // CHALLENGE 10
 function defineFirstArg(func, arg) {
-  function sub(x) {
+  const sub = (x) => {
     return func(20, x);
-  }
+  };
   return sub;
 }
 
@@ -185,10 +184,10 @@ function defineFirstArg(func, arg) {
 // CHALLENGE 11
 function dateStamp(func) {
   let obj = { date: "(todays date)" };
-  function dateFunc(x) {
+  const dateFunc = (x) => {
     obj["output"] = func(x);
     return obj;
-  }
+  };
   return dateFunc;
 }
 
@@ -201,7 +200,7 @@ function dateStamp(func) {
 function censor() {
   let prev = {};
   const words = [];
-  function changeWord(targetWord, currentWord) {
+  const changeWord = (targetWord, currentWord) => {
     if (!currentWord) {
       const reducer = (sentence, word) =>
         sentence.replace(word.target, word.current);
@@ -210,7 +209,7 @@ function censor() {
     }
     const wordPairs = { target: targetWord, current: currentWord };
     words.push(wordPairs);
-  }
+  };
   return changeWord;
 }
 
@@ -222,13 +221,13 @@ function censor() {
 
 // CHALLENGE 13
 function createSecretHolder(secret) {
-  function getSecret() {
+  const getSecret = () => {
     return secret;
-  }
-  function setSecret(newSecret) {
+  };
+  const setSecret = (newSecret) => {
     secret = newSecret;
     return secret;
-  }
+  };
   let obj = { getSecret, setSecret };
   return obj;
 }
@@ -242,11 +241,11 @@ function createSecretHolder(secret) {
 // CHALLENGE 14
 function callTimes() {
   let count = 0;
-  function times() {
+  const times = () => {
     count++;
     console.log(count);
     return count;
-  }
+  };
   return times;
 }
 
@@ -261,7 +260,7 @@ function callTimes() {
 // CHALLENGE 15
 function roulette(num) {
   let count = 0;
-  function func() {
+  const func = () => {
     count++;
     if (count < num) {
       return "spin";
@@ -270,7 +269,7 @@ function roulette(num) {
     } else {
       return "pick a number to play again";
     }
-  }
+  };
   return func;
 }
 
@@ -286,13 +285,13 @@ function roulette(num) {
 function average() {
   let count = 0,
     sum = 0;
-  function avg(x) {
+  const avg = (x) => {
     if (x) {
       count++;
       sum += x;
     }
     return sum / count || 0;
-  }
+  };
   return avg;
 }
 
@@ -307,14 +306,14 @@ function average() {
 
 // CHALLENGE 17
 function makeFuncTester(arrOfTests) {
-  function func(callback) {
+  const func = (callback) => {
     for (let i = 0; i < arrOfTests.length; i++) {
       if (!(callback(arrOfTests[i][0]) === callback(arrOfTests[i][1]))) {
         return false;
       }
     }
     return true;
-  }
+  };
   return func;
 }
 
@@ -332,7 +331,7 @@ function makeFuncTester(arrOfTests) {
 // CHALLENGE 18
 function makeHistory(limit) {
   let history = [];
-  function addOrPrint(str) {
+  const addOrPrint = (str) => {
     if (str !== "undo") {
       if (history.length === limit) {
         history.splice(0, 1);
@@ -345,7 +344,7 @@ function makeHistory(limit) {
       }
       return history.pop() + " undone";
     }
-  }
+  };
   return addOrPrint;
 }
 
@@ -363,11 +362,11 @@ function makeHistory(limit) {
 // CHALLENGE 19
 function blackjack(array) {
   let index = 0;
-  function dealer(x, y) {
+  const dealer = (x, y) => {
     let count = 0,
       done = false,
       sum = x + y;
-    function player() {
+    const player = () => {
       count++;
       if (count === 1) {
         return sum;
@@ -382,9 +381,9 @@ function blackjack(array) {
         }
         return sum;
       }
-    }
+    };
     return player;
-  }
+  };
   return dealer;
 }
 
